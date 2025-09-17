@@ -1,0 +1,601 @@
+﻿@page "/"
+@using MudBlazor
+
+<PageTitle>Flexible Organic Living Platform</PageTitle>
+<MudContainer MaxWidth="MaxWidth.False" Class="pa-0">
+    <div class="hero-section">
+        <MudImage Src="Images/Chocolate.png"
+                  Alt="Premium Artisan Chocolate"
+                  Class="hero-image"
+                  ObjectFit="ObjectFit.Cover"
+                  ObjectPosition="ObjectPosition.Center" />
+
+        <div class="content-overlay">
+            <div class="content-wrapper">
+                <MudText Typo="Typo.h1" Class="store-title">
+                    Griffins Store
+                </MudText>
+
+                <MudText Typo="Typo.h2" Class="main-title">
+                    Premium Artisan Chocolates
+                </MudText>
+
+                @* <MudText Typo="Typo.body1" Class="description-text">
+                    Indulge in our handcrafted chocolate collection, made with the finest cocoa beans and traditional techniques for an exceptional taste experience.
+                </MudText> *@
+
+               @*  <MudButton Variant="Variant.Filled"
+                           Color="Color.Dark"
+                           Size="Size.Large"
+                           Class="explore-button"
+                           EndIcon="Icons.Material.Filled.ArrowForward">
+                    Shop Now
+                </MudButton> *@
+            </div>
+        </div>
+    </div>
+</MudContainer>
+
+@code {
+    // Remove all slide-related code since we only have one image now
+}
+<MudContainer MaxWidth="MaxWidth.False" Class="category-section">
+    <MudText Typo="Typo.h3" Class="category-title text-center mb-6">
+        SHOP BY CATEGORY
+    </MudText>
+
+    <MudGrid Justify="Justify.Center" Spacing="4" Class="category-grid">
+        <!-- Dark Chocolate Category -->
+        <MudItem xs="12" sm="6" md="4" lg="6" Class="category-item">
+            <MudPaper Class="category-card dark-chocolate-card" Elevation="0">
+                <div class="category-content">
+                    <div class="category-text">
+                        <MudText Typo="Typo.subtitle2" Class="category-subtitle">Premium Dark</MudText>
+                        <MudText Typo="Typo.h4" Class="category-name">DARK CHOCOLATE</MudText>
+                        <MudButton Variant="Variant.Filled"
+                                   Class="category-btn dark-btn"
+                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                            SHOP NOW
+                        </MudButton>
+                    </div>
+                    <div class="category-image">
+                        <MudImage Src="Images/dark-chocolate.png"
+                                  Alt="Dark Chocolate"
+                                  Class="category-img" />
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Milk Chocolate Category -->
+        <MudItem xs="12" sm="6" md="4" lg="6" Class="category-item">
+            <MudPaper Class="category-card milk-chocolate-card" Elevation="0">
+                <div class="category-content">
+                    <div class="category-text">
+                        <MudText Typo="Typo.subtitle2" Class="category-subtitle">Creamy Smooth</MudText>
+                        <MudText Typo="Typo.h4" Class="category-name">MILK CHOCOLATE</MudText>
+                        <MudButton Variant="Variant.Filled"
+                                   Class="category-btn milk-btn"
+                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                            SHOP NOW
+                        </MudButton>
+                    </div>
+                    <div class="category-image">
+                        <MudImage Src="Images/milk-chocolate.png"
+                                  Alt="Milk Chocolate"
+                                  Class="category-img" />
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+
+        <!-- White Chocolate Category -->
+        <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
+            <MudPaper Class="category-card white-chocolate-card" Elevation="0">
+                <div class="category-content">
+                    <div class="category-text">
+                        <MudText Typo="Typo.subtitle2" Class="category-subtitle">Luxury Artisan</MudText>
+                        <MudText Typo="Typo.h4" Class="category-name">WHITE CHOCOLATE</MudText>
+                        <MudButton Variant="Variant.Filled"
+                                   Class="category-btn white-btn"
+                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                            SHOP NOW
+                        </MudButton>
+                    </div>
+                    <div class="category-image">
+                        <MudImage Src="Images/white-chocolate.png"
+                                  Alt="White Chocolate"
+                                  Class="category-img" />
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Truffles Category -->
+        <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
+            <MudPaper Class="category-card truffles-card" Elevation="0">
+                <div class="category-content">
+                    <div class="category-text">
+                        <MudText Typo="Typo.subtitle2" Class="category-subtitle">Gourmet Experience</MudText>
+                        <MudText Typo="Typo.h4" Class="category-name">TRUFFLES</MudText>
+                        <MudButton Variant="Variant.Filled"
+                                   Class="category-btn truffles-btn"
+                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                            SHOP NOW
+                        </MudButton>
+                    </div>
+                    <div class="category-image">
+                        <MudImage Src="Images/truffles.png"
+                                  Alt="Chocolate Truffles"
+                                  Class="category-img" />
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Gift Boxes Category -->
+        <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
+            <MudPaper Class="category-card gift-boxes-card" Elevation="0">
+                <div class="category-content">
+                    <div class="category-text">
+                        <MudText Typo="Typo.subtitle2" Class="category-subtitle">Perfect Gifting</MudText>
+                        <MudText Typo="Typo.h4" Class="category-name">GIFT BOXES</MudText>
+                        <MudButton Variant="Variant.Filled"
+                                   Class="category-btn gift-btn"
+                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                            SHOP NOW
+                        </MudButton>
+                    </div>
+                    <div class="category-image">
+                        <MudImage Src="Images/gift-boxes.png"
+                                  Alt="Chocolate Gift Boxes"
+                                  Class="category-img" />
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+@code {
+    //
+}
+
+<style>
+       .hero-section {
+
+        width: 100%;
+
+        height: 100vh;
+
+        margin: 0;
+
+        padding: 0;
+
+        position: relative;
+
+        overflow: hidden;
+
+    }
+
+    .hero-image {
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        display: block;
+
+    }
+
+    .content-overlay {
+
+        position: absolute;
+
+        top: 0;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 4rem;
+
+        z-index: 2;
+
+    }
+
+    .content-wrapper {
+
+        max-width: 600px;
+
+        text-align: left;
+
+    }
+
+    .store-title {
+
+        font-size: 4.5rem !important;
+
+        font-weight: 900 !important;
+
+        line-height: 1.1 !important;
+
+        color: #8B4513 !important;
+
+        margin-bottom: 1rem !important;
+
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+
+        letter-spacing: -2px;
+
+    }
+
+    .main-title {
+
+        font-size: 3rem !important;
+
+        font-weight: 700 !important;
+
+        line-height: 1.2 !important;
+
+        color: #2c3e50 !important;
+
+        margin-bottom: 1.5rem !important;
+
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .description-text {
+
+        font-size: 1.2rem !important;
+
+        line-height: 1.6 !important;
+
+        color: #5a6c7d !important;
+
+        margin-bottom: 2.5rem !important;
+
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+        max-width: 500px;
+
+    }
+
+    .explore-button {
+
+        padding: 1rem 2.5rem !important;
+
+        border-radius: 50px !important;
+
+        font-size: 1rem !important;
+
+        font-weight: 600 !important;
+
+        text-transform: none !important;
+
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+
+        transition: all 0.3s ease !important;
+
+    }
+
+    .explore-button:hover {
+
+        transform: translateY(-2px) !important;
+
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+
+    }
+
+        @@media (max-width: 768px) {
+
+        .content-overlay {
+
+            padding: 2rem;
+
+        }
+
+        .store-title {
+
+            font-size: 3.5rem !important;
+
+        }
+
+        .main-title {
+
+            font-size: 2.2rem !important;
+
+        }
+
+        .description-text {
+
+            font-size: 1rem !important;
+
+        }
+
+        .explore-button {
+
+            padding: 0.8rem 2rem !important;
+
+            font-size: 0.9rem !important;
+
+        }
+
+    }
+
+    @@media (max-width: 480px) {
+
+        .content-overlay {
+
+            padding: 1.5rem;
+
+        }
+
+        .store-title {
+
+            font-size: 2.8rem !important;
+
+        }
+
+        .main-title {
+
+            font-size: 1.8rem !important;
+
+        }
+
+        .content-wrapper {
+
+            max-width: 100%;
+
+        }
+
+    }
+
+    body, html {
+
+        margin: 0;
+
+        padding: 0;
+
+    }
+
+    .content-wrapper * {
+
+        animation: fadeIn 0.5s ease-in-out;
+
+    }
+
+   @@keyframes fadeIn {
+
+        from {
+
+            opacity: 0;
+
+            transform: translateY(20px);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+    }
+
+    /* SHOP BY CATEGORY section */
+    .category-section {
+        padding: 4rem 2rem !important;
+        background-color: #ffffff;
+        margin-top: 0 !important;
+    }
+
+    .category-title {
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 3rem !important;
+    }
+
+    .category-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .category-card {
+        border-radius: 20px !important;
+        height: 200px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+        position: relative;
+    }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+        }
+
+    .category-content {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .category-text {
+        flex: 1;
+        z-index: 3;
+    }
+
+    .category-subtitle {
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.5rem !important;
+        opacity: 0.8;
+    }
+
+    .category-name {
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .category-image {
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 180px;
+        height: 180px;
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    .category-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .category-btn {
+        border-radius: 25px !important;
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+
+        .category-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+        }
+
+    /* Individual category card colors */
+    .dark-chocolate-card {
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%) !important;
+        color: white !important;
+    }
+
+    .milk-chocolate-card {
+        background: linear-gradient(135deg, #CD853F 0%, #DEB887 100%) !important;
+        color: white !important;
+    }
+
+    .white-chocolate-card {
+        background: linear-gradient(135deg, #F5DEB3 0%, #FFF8DC 100%) !important;
+        color: #8B4513 !important;
+    }
+
+    .truffles-card {
+        background: linear-gradient(135deg, #654321 0%, #8B4513 100%) !important;
+        color: white !important;
+    }
+
+    .gift-boxes-card {
+        background: linear-gradient(135deg, #DC143C 0%, #FF6B6B 100%) !important;
+        color: white !important;
+    }
+
+    .dark-btn {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .milk-btn {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .white-btn {
+        background-color: #8B4513 !important;
+        color: white !important;
+    }
+
+    .truffles-btn {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .gift-btn {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .category-section {
+            padding: 3rem 1rem !important;
+        }
+
+        .category-title {
+            font-size: 2rem !important;
+            margin-bottom: 2rem !important;
+        }
+
+        .category-card {
+            height: 160px;
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .category-name {
+            font-size: 1.4rem !important;
+        }
+
+        .category-image {
+            width: 120px;
+            height: 120px;
+            right: -10px;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.2rem !important;
+            font-size: 0.8rem !important;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .category-card {
+            height: 140px;
+        }
+
+        .category-content {
+            padding: 1rem;
+        }
+
+        .category-name {
+            font-size: 1.2rem !important;
+        }
+
+        .category-image {
+            width: 100px;
+            height: 100px;
+        }
+    }
+</style>
