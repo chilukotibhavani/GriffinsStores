@@ -837,3 +837,4 @@ F:\GriffinsStore2\GriffinsStore1\GriffinsStore1\obj\Debug\net7.0\GriffinsStore1.
 F:\GriffinsStore2\GriffinsStore1\GriffinsStore1\obj\Debug\net7.0\refint\GriffinsStore1.dll
 F:\GriffinsStore2\GriffinsStore1\GriffinsStore1\obj\Debug\net7.0\GriffinsStore1.pdb
 F:\GriffinsStore2\GriffinsStore1\GriffinsStore1\obj\Debug\net7.0\ref\GriffinsStore1.dll
+F:\GriffinsStore2\GriffinsStore1\GriffinsStore1\obj\Debug\net7.0\GriffinsStore1.sourcelink.json

@@ -2,9 +2,9 @@
 @using MudBlazor
 
 <PageTitle>Flexible Organic Living Platform</PageTitle>
-<MudContainer MaxWidth="MaxWidth.False" Class="pa-0">
+<div class="full-width-container">
     <div class="hero-section">
-        <MudImage Src="Images/Chocolate.png"
+        <MudImage Src="Images/Chocolate4.png"
                   Alt="Premium Artisan Chocolate"
                   Class="hero-image"
                   ObjectFit="ObjectFit.Cover"
@@ -34,12 +34,12 @@
             </div>
         </div>
     </div>
-</MudContainer>
+</div>
 
 @code {
     // Remove all slide-related code since we only have one image now
 }
-<MudContainer MaxWidth="MaxWidth.False" Class="category-section">
+<div class="full-width-container">
     <MudText Typo="Typo.h3" Class="category-title text-center mb-6">
         SHOP BY CATEGORY
     </MudText>
@@ -155,244 +155,169 @@
             </MudPaper>
         </MudItem>
     </MudGrid>
-</MudContainer>
+</div>
 @code {
     //
 }
 
 <style>
-       .hero-section {
-
-        width: 100%;
-
-        height: 100vh;
-
+    .pl-4, .px-4{
+        padding-left: 9px !Important;
+        padding-top: 10px !important;
+    }
+    /* Remove all default margins and paddings */
+    .full-width-container {
+        width: 100vw;
         margin: 0;
-
         padding: 0;
-
         position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
 
+    .hero-section {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        position: relative;
         overflow: hidden;
-
+        /* This is the key change - make it cover the navigation area */
+        margin-top: -3.5rem;
+        z-index: -1;
     }
 
     .hero-image {
-
         width: 100%;
-
         height: 100%;
-
         object-fit: cover;
-
         object-position: center;
-
         display: block;
-
     }
 
     .content-overlay {
-
         position: absolute;
-
         top: 0;
-
         left: 0;
-
         width: 100%;
-
         height: 100%;
-
         display: flex;
-
         align-items: center;
-
         padding: 4rem;
-
         z-index: 2;
-
+        /* Add top padding to account for navigation */
+        padding-top: 7rem;
     }
 
     .content-wrapper {
-
         max-width: 600px;
-
         text-align: left;
-
+        font-family: 'Kaushan Script', cursive;
+        font-size: 48px;
+        color: #D4AF37;
+        font-weight: normal;
+        line-height: 1.5;
     }
 
     .store-title {
-
         font-size: 4.5rem !important;
-
         font-weight: 900 !important;
-
         line-height: 1.1 !important;
-
         color: #8B4513 !important;
-
         margin-bottom: 1rem !important;
-
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-
         letter-spacing: -2px;
-
     }
 
     .main-title {
-
         font-size: 3rem !important;
-
         font-weight: 700 !important;
-
         line-height: 1.2 !important;
-
         color: #2c3e50 !important;
-
         margin-bottom: 1.5rem !important;
-
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-
     }
 
     .description-text {
-
         font-size: 1.2rem !important;
-
         line-height: 1.6 !important;
-
         color: #5a6c7d !important;
-
         margin-bottom: 2.5rem !important;
-
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-
         max-width: 500px;
-
     }
 
     .explore-button {
-
         padding: 1rem 2.5rem !important;
-
         border-radius: 50px !important;
-
         font-size: 1rem !important;
-
         font-weight: 600 !important;
-
         text-transform: none !important;
-
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-
         transition: all 0.3s ease !important;
-
     }
 
     .explore-button:hover {
-
         transform: translateY(-2px) !important;
-
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
-
     }
 
-        @@media (max-width: 768px) {
-
+    @@media (max-width: 768px) {
         .content-overlay {
-
             padding: 2rem;
-
+            padding-top: 6rem;
         }
-
         .store-title {
-
             font-size: 3.5rem !important;
-
         }
-
         .main-title {
-
             font-size: 2.2rem !important;
-
         }
-
         .description-text {
-
             font-size: 1rem !important;
-
         }
-
         .explore-button {
-
             padding: 0.8rem 2rem !important;
-
             font-size: 0.9rem !important;
-
         }
-
     }
 
     @@media (max-width: 480px) {
-
         .content-overlay {
-
             padding: 1.5rem;
-
+            padding-top: 5rem;
         }
-
         .store-title {
-
             font-size: 2.8rem !important;
-
         }
-
         .main-title {
-
             font-size: 1.8rem !important;
-
         }
-
         .content-wrapper {
-
             max-width: 100%;
-
         }
-
     }
 
     body, html {
-
         margin: 0;
-
         padding: 0;
-
     }
 
     .content-wrapper * {
-
         animation: fadeIn 0.5s ease-in-out;
-
     }
 
-   @@keyframes fadeIn {
-
+    @@keyframes fadeIn {
         from {
-
             opacity: 0;
-
             transform: translateY(20px);
-
         }
-
         to {
-
             opacity: 1;
-
             transform: translateY(0);
-
         }
-
     }
 
     /* SHOP BY CATEGORY section */
@@ -400,6 +325,12 @@
         padding: 4rem 2rem !important;
         background-color: #ffffff;
         margin-top: 0 !important;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
     }
 
     .category-title {
