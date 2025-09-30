@@ -13,8 +13,20 @@
       "PackagePath": "staticwebassets\\GriffinsStore1.styles.css"
     },
     {
-      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Chocolate.png",
-      "PackagePath": "staticwebassets\\Images\\Chocolate.png"
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Chocolate1.png",
+      "PackagePath": "staticwebassets\\Images\\Chocolate1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Chocolate2.png",
+      "PackagePath": "staticwebassets\\Images\\Chocolate2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Chocolate3.png",
+      "PackagePath": "staticwebassets\\Images\\Chocolate3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Chocolate4.png",
+      "PackagePath": "staticwebassets\\Images\\Chocolate4.png"
     },
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate.png",

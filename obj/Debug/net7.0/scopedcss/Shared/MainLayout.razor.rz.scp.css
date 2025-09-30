@@ -2,10 +2,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    overflow-x: hidden !important;
 }
 
 main[b-3qwjn9i33w] {
     flex: 1;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .sidebar[b-3qwjn9i33w] {
@@ -13,28 +18,59 @@ main[b-3qwjn9i33w] {
 }
 
 .top-row[b-3qwjn9i33w] {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
+    /* Make the navigation transparent and positioned over the hero */
+    background-color: transparent !important;
+    border-bottom: none !important;
+    justify-content: center !important; /* Changed from flex-end to center */
     height: 3.5rem;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 10; /* Ensure it's above the hero image */
+    width: 100%;
+    margin: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 1rem !important; /* Added top padding to push it down */
 }
 
-    .top-row[b-3qwjn9i33w]  a, .top-row[b-3qwjn9i33w]  .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
+
+.nav-list[b-3qwjn9i33w] {
+    list-style: none;
+    margin: 8px;
+    padding: 0;
+    display: flex; /* Make them appear side by side */
+    gap: 30px; /* Increased gap for better spacing when centered */
+    justify-content: center; /* Center the navigation items */
+}
+
+    .nav-list li a[b-3qwjn9i33w] {
+        text-decoration: none; /* Remove underline from links */
+        color: white !important; /* Make navigation text white to show on dark background */
+        font-weight: 500;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add text shadow for better readability */
+        font-size: 1.1rem; /* Slightly larger font for better visibility */
     }
 
-        .top-row[b-3qwjn9i33w]  a:hover, .top-row[b-3qwjn9i33w]  .btn-link:hover {
+        .nav-list li a:hover[b-3qwjn9i33w] {
             text-decoration: underline;
+            color: #f0f0f0 !important;
         }
 
-        .top-row[b-3qwjn9i33w]  a:first-child {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.top-row[b-3qwjn9i33w]  a, .top-row[b-3qwjn9i33w]  .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    text-decoration: none;
+}
+
+    .top-row[b-3qwjn9i33w]  a:hover, .top-row[b-3qwjn9i33w]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-3qwjn9i33w]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth)[b-3qwjn9i33w] {
@@ -65,7 +101,7 @@ main[b-3qwjn9i33w] {
     .top-row[b-3qwjn9i33w] {
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 10; /* Keep it above other content */
     }
 
         .top-row.auth[b-3qwjn9i33w]  a:first-child {
@@ -76,7 +112,14 @@ main[b-3qwjn9i33w] {
 
     .top-row[b-3qwjn9i33w], article[b-3qwjn9i33w] {
         padding-left: 0rem !important;
-        padding-right: 0.5rem !important;
+        padding-right: 0rem !important;
         padding-top: 0rem !important;
     }
+
+        /* Remove all default margins and padding from main content area */
+        article.content[b-3qwjn9i33w] {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100%;
+        }
 }
