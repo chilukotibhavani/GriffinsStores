@@ -29,6 +29,38 @@
       "PackagePath": "staticwebassets\\Images\\Chocolate4.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\IMG_20250920_114933.png",
+      "PackagePath": "staticwebassets\\Images\\IMG_20250920_114933.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\Menu_Griffins-01.jpg",
+      "PackagePath": "staticwebassets\\Images\\Menu_Griffins-01.jpg"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-1.png",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-2.jpg",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-2.jpg"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-3.png",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-4.png",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-4.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-5.png",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-5.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate-6.png",
+      "PackagePath": "staticwebassets\\Images\\dark-chocolate-6.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-chocolate.png",
       "PackagePath": "staticwebassets\\Images\\dark-chocolate.png"
     },
@@ -37,12 +69,116 @@
       "PackagePath": "staticwebassets\\Images\\gift-boxes.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-14.png",
+      "PackagePath": "staticwebassets\\Images\\image-14.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-16.png",
+      "PackagePath": "staticwebassets\\Images\\image-16.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-20.png",
+      "PackagePath": "staticwebassets\\Images\\image-20.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-22.png",
+      "PackagePath": "staticwebassets\\Images\\image-22.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-23.png",
+      "PackagePath": "staticwebassets\\Images\\image-23.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-25.png",
+      "PackagePath": "staticwebassets\\Images\\image-25.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\image-30.png",
+      "PackagePath": "staticwebassets\\Images\\image-30.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-1.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-2.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-3.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-4.jpg",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-4.jpg"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-4.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-4.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-5.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-5.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate-6.png",
+      "PackagePath": "staticwebassets\\Images\\milk-chocolate-6.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-chocolate.png",
       "PackagePath": "staticwebassets\\Images\\milk-chocolate.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-1.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-2.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-3.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-4.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-4.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-5.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-5.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-6.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-6.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles.png",
       "PackagePath": "staticwebassets\\Images\\truffles.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-1.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-2.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-3.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-4.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-4.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-5.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-5.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate-6.png",
+      "PackagePath": "staticwebassets\\Images\\white-chocolate-6.png"
     },
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate.png",

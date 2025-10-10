@@ -1,0 +1,295 @@
+﻿@page "/giftboxes"
+@using MudBlazor
+
+<PageTitle>Luxury Gift Boxes - Griffins Store</PageTitle>
+
+<div class="gift-boxes-page">
+    <!-- Category Description -->
+    <MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+
+        <!-- Product Grid -->
+        <MudGrid Spacing="4" Justify="Justify.Center">
+            @foreach (var product in giftBoxProducts)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="product-card">
+                        <MudCardMedia Image="@product.ImageUrl" Height="250" Class="product-image" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6" Class="product-name">@product.Name</MudText>
+                            <MudText Typo="Typo.body2" Class="product-description">@product.Description</MudText>
+                            <MudText Typo="Typo.h6" Class="product-price">$@product.Price</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Default"
+                                       FullWidth="true"
+                                       Class="add-to-cart-btn">
+                                Add to Cart
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+
+        <!-- Features Section -->
+        <div class="features-section mt-12">
+            <MudText Typo="Typo.h4" Class="section-title text-center mb-6">
+                Why Choose Our Gift Boxes
+            </MudText>
+            <MudGrid Spacing="4">
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.CardGiftcard" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Premium Packaging</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Elegantly designed boxes perfect for any occasion
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Diamond" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Curated Selection</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Handpicked assortments of our finest chocolates
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.LocalShipping" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Gift Ready</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Arrives beautifully wrapped with a personalized card
+                        </MudText>
+                    </div>
+                </MudItem>
+            </MudGrid>
+        </div>
+    </MudContainer>
+</div>
+
+@code {
+    private List<Product> giftBoxProducts = new()
+    {
+        new Product
+        {
+            Name = "Classic Assortment",
+            Description = "12-piece selection of milk, dark, and white chocolates",
+            Price = 29.99m,
+            ImageUrl = "Images/gift-box-1.png"
+        },
+        new Product
+        {
+            Name = "Premium Deluxe Box",
+            Description = "24-piece luxury collection with truffles and pralines",
+            Price = 49.99m,
+            ImageUrl = "Images/gift-box-2.png"
+        },
+        new Product
+        {
+            Name = "Dark Chocolate Lovers",
+            Description = "16-piece box featuring our finest dark chocolate varieties",
+            Price = 39.99m,
+            ImageUrl = "Images/gift-box-3.png"
+        },
+        new Product
+        {
+            Name = "Valentine's Romance",
+            Description = "Heart-shaped box with 20 romantic chocolate pieces",
+            Price = 44.99m,
+            ImageUrl = "Images/gift-box-4.png"
+        },
+        new Product
+        {
+            Name = "Corporate Excellence",
+            Description = "36-piece executive gift box for business occasions",
+            Price = 69.99m,
+            ImageUrl = "Images/gift-box-5.png"
+        },
+        new Product
+        {
+            Name = "Seasonal Celebration",
+            Description = "18-piece festive collection with seasonal flavors",
+            Price = 42.99m,
+            ImageUrl = "Images/gift-box-6.png"
+        }
+    };
+
+    public class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}
+
+<style>
+    .gift-boxes-page {
+        min-height: 100vh;
+        background-color: #fafafa;
+    }
+
+    .category-hero {
+        height: 400px;
+        background: linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 50%, #FFB6C1 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23FFB6C1" width="1200" height="600"/><g fill-opacity="0.1"><polygon fill="white" points="100,50 150,150 50,150"/><polygon fill="white" points="500,200 580,350 420,350"/><polygon fill="white" points="900,100 960,220 840,220"/><polygon fill="white" points="1100,350 1150,450 1050,450"/></g></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+    .hero-overlay {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .category-hero-title {
+        font-size: 4rem !important;
+        font-weight: 900 !important;
+        color: #C71585 !important;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem !important;
+        letter-spacing: -1px;
+    }
+
+    .category-hero-subtitle {
+        font-size: 1.5rem !important;
+        color: #DB7093 !important;
+        font-weight: 400 !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .description-text {
+        color: #5a6c7d !important;
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+    }
+
+    .product-card {
+        border-radius: 16px !important;
+        overflow: hidden;
+        transition: all 0.3s ease !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #FFB6C1;
+    }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(255, 182, 193, 0.3) !important;
+            border-color: #FF69B4;
+        }
+
+    .product-image {
+        transition: transform 0.3s ease;
+        background-color: #FFF5F7;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-name {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .product-description {
+        color: #5a6c7d !important;
+        margin-bottom: 1rem !important;
+        min-height: 40px;
+    }
+
+    .product-price {
+        color: #C71585 !important;
+        font-weight: 700 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .add-to-cart-btn {
+        border-radius: 8px !important;
+        padding: 0.8rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        font-size: 1rem !important;
+        background-color: #C71585 !important;
+        color: white !important;
+    }
+
+        .add-to-cart-btn:hover {
+            background-color: #A0015C !important;
+        }
+
+    .features-section {
+        background: linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 100%);
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-icon {
+        color: #C71585 !important;
+        margin-bottom: 1rem;
+    }
+
+    .feature-title {
+        font-weight: 700 !important;
+        color: #C71585 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .feature-text {
+        color: #5a6c7d !important;
+        line-height: 1.6 !important;
+    }
+
+    @@media (max-width: 768px) {
+        .category-hero {
+            height: 300px;
+        }
+
+        .category-hero-title {
+            font-size: 2.5rem !important;
+        }
+
+        .category-hero-subtitle {
+            font-size: 1.2rem !important;
+        }
+
+        .features-section {
+            padding: 2rem 1rem;
+        }
+    }
+</style>
