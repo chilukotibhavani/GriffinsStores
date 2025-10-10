@@ -1,0 +1,303 @@
+﻿@page "/truffles"
+@using MudBlazor
+
+<PageTitle>Gourmet Truffles - Griffins Store</PageTitle>
+
+<div class="truffles-page">
+    <!-- Category Description -->
+    <MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+
+        <!-- Product Grid -->
+        <MudGrid Spacing="4" Justify="Justify.Center">
+            @foreach (var product in truffleProducts)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="product-card">
+                        <MudCardMedia Image="@product.ImageUrl" Height="250" Class="product-image" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6" Class="product-name">@product.Name</MudText>
+                            <MudText Typo="Typo.body2" Class="product-description">@product.Description</MudText>
+                            <MudText Typo="Typo.h6" Class="product-price">$@product.Price</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Default"
+                                       FullWidth="true"
+                                       Class="add-to-cart-btn">
+                                Add to Cart
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+
+        <!-- Features Section -->
+        <div class="features-section mt-12">
+            <MudText Typo="Typo.h4" Class="section-title text-center mb-6">
+                Why Choose Our Truffles
+            </MudText>
+            <MudGrid Spacing="4">
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Verified" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Gourmet Excellence</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Hand-rolled with premium ganache and finest ingredients
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Handshake" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Master Crafted</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Created by expert chocolatiers using traditional methods
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Favorite" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Pure Indulgence</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Melt-in-your-mouth texture with exquisite flavors
+                        </MudText>
+                    </div>
+                </MudItem>
+            </MudGrid>
+        </div>
+    </MudContainer>
+</div>
+
+@code {
+    private List<Product> truffleProducts = new()
+    {
+        new Product
+        {
+            Name = "Classic Dark Truffles",
+            Description = "Rich dark chocolate ganache dusted with cocoa powder",
+            Price = 18.99m,
+            ImageUrl = "Images/truffles-1.png"
+        },
+        new Product
+        {
+            Name = "Champagne Truffles",
+            Description = "Luxurious truffles infused with fine champagne",
+            Price = 22.99m,
+            ImageUrl = "Images/truffles-2.png"
+        },
+        new Product
+        {
+            Name = "Salted Caramel Truffles",
+            Description = "Smooth caramel ganache with a hint of sea salt",
+            Price = 19.99m,
+            ImageUrl = "Images/truffles-3.png"
+        },
+        new Product
+        {
+            Name = "Hazelnut Praline Truffles",
+            Description = "Roasted hazelnut praline in dark chocolate shell",
+            Price = 20.99m,
+            ImageUrl = "Images/truffles-4.png"
+        },
+        new Product
+        {
+            Name = "Raspberry Rose Truffles",
+            Description = "Delicate raspberry and rose petal infused ganache",
+            Price = 21.99m,
+            ImageUrl = "Images/truffles-5.png"
+        },
+        new Product
+        {
+            Name = "Espresso Truffles",
+            Description = "Bold coffee ganache covered in dark chocolate",
+            Price = 19.99m,
+            ImageUrl = "Images/truffles-6.png"
+        }
+    };
+
+    public class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}
+
+<style>
+    .truffles-page {
+        min-height: 100vh;
+        background-color: #fafafa;
+    }
+
+    .category-hero {
+        height: 400px;
+        background: linear-gradient(135deg, #3d2817 0%, #654321 50%, #8B4513 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .category-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23654321" width="1200" height="600"/><g fill-opacity="0.1"><circle fill="white" cx="100" cy="100" r="80"/><circle fill="white" cx="500" cy="300" r="120"/><circle fill="white" cx="900" cy="150" r="100"/><circle fill="white" cx="1100" cy="400" r="90"/></g></svg>') center/cover;
+        opacity: 0.3;
+    }
+
+    .hero-overlay {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .category-hero-title {
+        font-size: 4rem !important;
+        font-weight: 900 !important;
+        color: white !important;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1rem !important;
+        letter-spacing: -1px;
+    }
+
+    .category-hero-subtitle {
+        font-size: 1.5rem !important;
+        color: #D4AF37 !important;
+        font-weight: 400 !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .description-text {
+        color: #5a6c7d !important;
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+    }
+
+    .product-card {
+        border-radius: 16px !important;
+        overflow: hidden;
+        transition: all 0.3s ease !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+        border: 1px solid #e0e0e0;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(101, 67, 33, 0.2) !important;
+        border-color: #654321;
+    }
+
+    .product-image {
+        transition: transform 0.3s ease;
+        background: radial-gradient(circle, #f5f5f5 0%, #e8e8e8 100%);
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-name {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .product-description {
+        color: #5a6c7d !important;
+        margin-bottom: 1rem !important;
+        min-height: 40px;
+        font-style: italic;
+    }
+
+    .product-price {
+        color: #654321 !important;
+        font-weight: 700 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .add-to-cart-btn {
+        border-radius: 8px !important;
+        padding: 0.8rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        font-size: 1rem !important;
+        background: linear-gradient(135deg, #654321 0%, #8B4513 100%) !important;
+        color: white !important;
+    }
+
+    .add-to-cart-btn:hover {
+        background: linear-gradient(135deg, #5a3817 0%, #654321 100%) !important;
+        box-shadow: 0 4px 15px rgba(101, 67, 33, 0.3) !important;
+    }
+
+    .features-section {
+        background: linear-gradient(135deg, #3d2817 0%, #654321 100%);
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        color: white;
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-icon {
+        color: #D4AF37 !important;
+        margin-bottom: 1rem;
+    }
+
+    .feature-title {
+        font-weight: 700 !important;
+        color: white !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .feature-text {
+        color: #e8e8e8 !important;
+        line-height: 1.6 !important;
+    }
+
+    .section-title {
+        color: white !important;
+    }
+
+    @@media (max-width: 768px) {
+        .category-hero {
+            height: 300px;
+        }
+
+        .category-hero-title {
+            font-size: 2.5rem !important;
+        }
+
+        .category-hero-subtitle {
+            font-size: 1.2rem !important;
+        }
+
+        .features-section {
+            padding: 2rem 1rem;
+        }
+    }
+</style>

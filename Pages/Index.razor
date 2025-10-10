@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using MudBlazor
+@inject NavigationManager NavigationManager
 
 <PageTitle>Flexible Organic Living Platform</PageTitle>
 <div class="full-width-container">
@@ -47,14 +48,15 @@
     <MudGrid Justify="Justify.Center" Spacing="4" Class="category-grid">
         <!-- Dark Chocolate Category -->
         <MudItem xs="12" sm="6" md="4" lg="6" Class="category-item">
-            <MudPaper Class="category-card dark-chocolate-card" Elevation="0">
+            <MudPaper Class="category-card dark-chocolate-card" Elevation="0" OnClick="() => NavigateToDarkChocolate()">
                 <div class="category-content">
                     <div class="category-text">
                         <MudText Typo="Typo.subtitle2" Class="category-subtitle">Premium Dark</MudText>
                         <MudText Typo="Typo.h4" Class="category-name">DARK CHOCOLATE</MudText>
                         <MudButton Variant="Variant.Filled"
                                    Class="category-btn dark-btn"
-                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                                   EndIcon="Icons.Material.Filled.ArrowForward"
+                                   OnClick="() => NavigateToDarkChocolate()">
                             SHOP NOW
                         </MudButton>
                     </div>
@@ -69,14 +71,15 @@
 
         <!-- Milk Chocolate Category -->
         <MudItem xs="12" sm="6" md="4" lg="6" Class="category-item">
-            <MudPaper Class="category-card milk-chocolate-card" Elevation="0">
+            <MudPaper Class="category-card milk-chocolate-card" Elevation="0" OnClick="() => NavigateToMilkChocolate()">
                 <div class="category-content">
                     <div class="category-text">
                         <MudText Typo="Typo.subtitle2" Class="category-subtitle">Creamy Smooth</MudText>
                         <MudText Typo="Typo.h4" Class="category-name">MILK CHOCOLATE</MudText>
                         <MudButton Variant="Variant.Filled"
                                    Class="category-btn milk-btn"
-                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                                   EndIcon="Icons.Material.Filled.ArrowForward"
+                                   OnClick="() => NavigateToMilkChocolate()">
                             SHOP NOW
                         </MudButton>
                     </div>
@@ -91,14 +94,15 @@
 
         <!-- White Chocolate Category -->
         <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
-            <MudPaper Class="category-card white-chocolate-card" Elevation="0">
+            <MudPaper Class="category-card white-chocolate-card" Elevation="0" OnClick="() => NavigateToWhiteChocolate">
                 <div class="category-content">
                     <div class="category-text">
                         <MudText Typo="Typo.subtitle2" Class="category-subtitle">Luxury Artisan</MudText>
                         <MudText Typo="Typo.h4" Class="category-name">WHITE CHOCOLATE</MudText>
                         <MudButton Variant="Variant.Filled"
                                    Class="category-btn white-btn"
-                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                                   EndIcon="Icons.Material.Filled.ArrowForward"
+                                   OnClick="() => NavigateToWhiteChocolate()">
                             SHOP NOW
                         </MudButton>
                     </div>
@@ -113,14 +117,15 @@
 
         <!-- Truffles Category -->
         <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
-            <MudPaper Class="category-card truffles-card" Elevation="0">
+            <MudPaper Class="category-card truffles-card" Elevation="0" onclick="() => NavigateToTruffles">
                 <div class="category-content">
                     <div class="category-text">
                         <MudText Typo="Typo.subtitle2" Class="category-subtitle">Gourmet Experience</MudText>
                         <MudText Typo="Typo.h4" Class="category-name">TRUFFLES</MudText>
                         <MudButton Variant="Variant.Filled"
                                    Class="category-btn truffles-btn"
-                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                                   EndIcon="Icons.Material.Filled.ArrowForward"
+                                   OnClick="() => NavigateToTruffles()">
                             SHOP NOW
                         </MudButton>
                     </div>
@@ -135,14 +140,15 @@
 
         <!-- Gift Boxes Category -->
         <MudItem xs="12" sm="6" md="4" lg="4" Class="category-item">
-            <MudPaper Class="category-card gift-boxes-card" Elevation="0">
+            <MudPaper Class="category-card gift-boxes-card" Elevation="0" onclick="() => NavigateToGiftboxes">
                 <div class="category-content">
                     <div class="category-text">
                         <MudText Typo="Typo.subtitle2" Class="category-subtitle">Perfect Gifting</MudText>
                         <MudText Typo="Typo.h4" Class="category-name">GIFT BOXES</MudText>
                         <MudButton Variant="Variant.Filled"
                                    Class="category-btn gift-btn"
-                                   EndIcon="Icons.Material.Filled.ArrowForward">
+                                   EndIcon="Icons.Material.Filled.ArrowForward"
+                                   OnClick="() => NavigateToGiftboxes()">
                             SHOP NOW
                         </MudButton>
                     </div>
@@ -157,7 +163,26 @@
     </MudGrid>
 </div>
 @code {
-    //
+    private void NavigateToDarkChocolate()
+    {
+        NavigationManager.NavigateTo("/darkchocolate");
+    }
+    private void NavigateToMilkChocolate()
+    {
+        NavigationManager.NavigateTo("/milkchocolate");
+    }
+    private void NavigateToWhiteChocolate()
+    {
+        NavigationManager.NavigateTo("/whitechocolate");
+    }
+    private void NavigateToTruffles()
+    {
+        NavigationManager.NavigateTo("/truffles");
+    }
+    private void NavigateToGiftboxes()
+    {
+        NavigationManager.NavigateTo("/giftboxes");
+    }
 }
 
 <style>

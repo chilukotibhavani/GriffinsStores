@@ -1,0 +1,295 @@
+﻿@page "/milkchocolate"
+@using MudBlazor
+
+<PageTitle>Creamy Milk Chocolate - Griffins Store</PageTitle>
+
+<div class="milk-chocolate-page">
+    <!-- Category Description -->
+    <MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+        
+        <!-- Product Grid -->
+        <MudGrid Spacing="4" Justify="Justify.Center">
+            @foreach (var product in milkChocolateProducts)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="product-card">
+                        <MudCardMedia Image="@product.ImageUrl" Height="250" Class="product-image" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6" Class="product-name">@product.Name</MudText>
+                            <MudText Typo="Typo.body2" Class="product-description">@product.Description</MudText>
+                            <MudText Typo="Typo.h6" Class="product-price">$@product.Price</MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Filled" 
+                                       Color="Color.Default" 
+                                       FullWidth="true"
+                                       Class="add-to-cart-btn">
+                                Add to Cart
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+
+        <!-- Features Section -->
+        <div class="features-section mt-12">
+            <MudText Typo="Typo.h4" Class="section-title text-center mb-6">
+                Why Choose Our Milk Chocolate
+            </MudText>
+            <MudGrid Spacing="4">
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Verified" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Creamy Perfection</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Made with premium milk and 35-45% fine cocoa
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Handshake" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Family Favorite</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Loved by all ages for its smooth, sweet taste
+                        </MudText>
+                    </div>
+                </MudItem>
+                <MudItem xs="12" md="4">
+                    <div class="feature-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Favorite" Size="Size.Large" Class="feature-icon" />
+                        <MudText Typo="Typo.h6" Class="feature-title">Feel Good</MudText>
+                        <MudText Typo="Typo.body2" Class="feature-text">
+                            Rich in calcium and natural mood enhancers
+                        </MudText>
+                    </div>
+                </MudItem>
+            </MudGrid>
+        </div>
+    </MudContainer>
+</div>
+
+@code {
+    private List<Product> milkChocolateProducts = new()
+    {
+        new Product 
+        { 
+            Name = "Classic Milk Bar",
+            Description = "Our signature smooth milk chocolate bar",
+            Price = 9.99m,
+            ImageUrl = "Images/milk-chocolate-1.png"
+        },
+        new Product 
+        { 
+            Name = "Caramel Milk Swirl",
+            Description = "Creamy milk chocolate with ribbons of golden caramel",
+            Price = 11.99m,
+            ImageUrl = "Images/milk-chocolate-2.png"
+        },
+        new Product 
+        { 
+            Name = "Hazelnut Milk Delight",
+            Description = "Smooth milk chocolate with crunchy roasted hazelnuts",
+            Price = 12.99m,
+            ImageUrl = "Images/milk-chocolate-3.png"
+        },
+        new Product 
+        { 
+            Name = "Cookies & Cream",
+            Description = "Milk chocolate studded with cookie pieces",
+            Price = 11.99m,
+            ImageUrl = "Images/milk-chocolate-4.png"
+        },
+        new Product 
+        { 
+            Name = "Strawberry Milk Fusion",
+            Description = "Sweet milk chocolate infused with real strawberry",
+            Price = 10.99m,
+            ImageUrl = "Images/milk-chocolate-5.png"
+        },
+        new Product 
+        { 
+            Name = "Toffee Crunch Milk",
+            Description = "Rich milk chocolate with buttery toffee bits",
+            Price = 12.99m,
+            ImageUrl = "Images/milk-chocolate-6.png"
+        }
+    };
+
+    public class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}
+
+<style>
+    .milk-chocolate-page {
+        min-height: 100vh;
+        background-color: #fafafa;
+    }
+
+    .category-hero {
+        height: 400px;
+        background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 50%, #F5DEB3 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F5DEB3" width="1200" height="600"/><g fill-opacity="0.1"><circle fill="white" cx="100" cy="100" r="80"/><circle fill="white" cx="500" cy="300" r="120"/><circle fill="white" cx="900" cy="150" r="100"/><circle fill="white" cx="1100" cy="400" r="90"/></g></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+    .hero-overlay {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .category-hero-title {
+        font-size: 4rem !important;
+        font-weight: 900 !important;
+        color: #8B4513 !important;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem !important;
+        letter-spacing: -1px;
+    }
+
+    .category-hero-subtitle {
+        font-size: 1.5rem !important;
+        color: #A0522D !important;
+        font-weight: 400 !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .description-text {
+        color: #5a6c7d !important;
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+    }
+
+    .product-card {
+        border-radius: 16px !important;
+        overflow: hidden;
+        transition: all 0.3s ease !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #F5DEB3;
+    }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(245, 222, 179, 0.3) !important;
+            border-color: #DEB887;
+        }
+
+    .product-image {
+        transition: transform 0.3s ease;
+        background-color: #FFFEF9;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-name {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .product-description {
+        color: #5a6c7d !important;
+        margin-bottom: 1rem !important;
+        min-height: 40px;
+    }
+
+    .product-price {
+        color: #8B4513 !important;
+        font-weight: 700 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .add-to-cart-btn {
+        border-radius: 8px !important;
+        padding: 0.8rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        font-size: 1rem !important;
+        background-color: #8B4513 !important;
+        color: white !important;
+    }
+
+        .add-to-cart-btn:hover {
+            background-color: #654321 !important;
+        }
+
+    .features-section {
+        background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-icon {
+        color: #8B4513 !important;
+        margin-bottom: 1rem;
+    }
+
+    .feature-title {
+        font-weight: 700 !important;
+        color: #8B4513 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .feature-text {
+        color: #5a6c7d !important;
+        line-height: 1.6 !important;
+    }
+
+    @@media (max-width: 768px) {
+        .category-hero {
+            height: 300px;
+        }
+
+        .category-hero-title {
+            font-size: 2.5rem !important;
+        }
+
+        .category-hero-subtitle {
+            font-size: 1.2rem !important;
+        }
+
+        .features-section {
+            padding: 2rem 1rem;
+        }
+    }
+</style>
