@@ -1,24 +1,15 @@
 ﻿@page "/darkchocolate"
 @using MudBlazor
+@using GriffinsStore1.Shared
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
 
 <PageTitle>Premium Dark Chocolate - Griffins Store</PageTitle>
 
 <div class="dark-chocolate-page">
-   @*  <!-- Hero Section -->
-    <div class="category-hero">
-        <div class="hero-overlay">
-            <MudText Typo="Typo.h1" Class="category-hero-title">
-                Premium Dark Chocolate
-            </MudText>
-            <MudText Typo="Typo.h5" Class="category-hero-subtitle">
-                Rich, Intense, and Unforgettable
-            </MudText>
-        </div>
-    </div> *@
-
     <!-- Category Description -->
     <MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
-        
+
         <!-- Product Grid -->
         <MudGrid Spacing="4" Justify="Justify.Center">
             @foreach (var product in darkChocolateProducts)
@@ -32,10 +23,12 @@
                             <MudText Typo="Typo.h6" Class="product-price">$@product.Price</MudText>
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Variant="Variant.Filled" 
-                                       Color="Color.Dark" 
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Dark"
                                        FullWidth="true"
-                                       Class="add-to-cart-btn">
+                                       Class="add-to-cart-btn"
+                                       OnClick="@(() => AddToCart(product))">
+                                <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="mr-2" />
                                 Add to Cart
                             </MudButton>
                         </MudCardActions>
@@ -85,49 +78,64 @@
 @code {
     private List<Product> darkChocolateProducts = new()
     {
-        new Product 
-        { 
+        new Product
+        {
             Name = "70% Dark Origin Bar",
             Description = "Single-origin Ecuador cocoa with notes of cherry and citrus",
             Price = 12.99m,
             ImageUrl = "Images/dark-chocolate-1.png"
         },
-        new Product 
-        { 
+        new Product
+        {
             Name = "85% Intense Dark",
             Description = "Ultra-dark chocolate for true connoisseurs",
             Price = 14.99m,
             ImageUrl = "Images/dark-chocolate-2.jpg"
         },
-        new Product 
-        { 
+        new Product
+        {
             Name = "Sea Salt Dark",
             Description = "70% dark chocolate with Himalayan sea salt crystals",
             Price = 13.99m,
             ImageUrl = "Images/dark-chocolate-3.png"
         },
-        new Product 
-        { 
+        new Product
+        {
             Name = "Dark Almond Bark",
             Description = "Rich dark chocolate studded with roasted almonds",
             Price = 15.99m,
             ImageUrl = "Images/dark-chocolate-4.png"
         },
-        new Product 
-        { 
+        new Product
+        {
             Name = "Orange Dark Fusion",
             Description = "Dark chocolate infused with natural orange essence",
             Price = 13.99m,
             ImageUrl = "Images/dark-chocolate-5.png"
         },
-        new Product 
-        { 
+        new Product
+        {
             Name = "Mint Dark Delight",
             Description = "Smooth dark chocolate with a refreshing mint twist",
             Price = 13.99m,
             ImageUrl = "Images/dark-chocolate-6.png"
         }
     };
+
+    private void AddToCart(Product product)
+    {
+        var cartItem = new CartItem
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                ImageUrl = product.ImageUrl,
+                Quantity = 1
+            };
+
+        CartService.AddToCart(cartItem);
+        Snackbar.Add("Added to cart!", Severity.Success);
+    }
 
     public class Product
     {
@@ -144,62 +152,10 @@
         background-color: #fafafa;
     }
 
-    .category-hero {
-        height: 400px;
-        background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 50%, #F5DEB3 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-        .category-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F5DEB3" width="1200" height="600"/><g fill-opacity="0.1"><circle fill="white" cx="100" cy="100" r="80"/><circle fill="white" cx="500" cy="300" r="120"/><circle fill="white" cx="900" cy="150" r="100"/><circle fill="white" cx="1100" cy="400" r="90"/></g></svg>') center/cover;
-            opacity: 0.3;
-        }
-
-    .hero-overlay {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        padding: 2rem;
-    }
-
-    .category-hero-title {
-        font-size: 4rem !important;
-        font-weight: 900 !important;
-        color: #8B4513 !important;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 1rem !important;
-        letter-spacing: -1px;
-    }
-
-    .category-hero-subtitle {
-        font-size: 1.5rem !important;
-        color: #A0522D !important;
-        font-weight: 400 !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
     .section-title {
         font-weight: 700 !important;
         color: #2c3e50 !important;
         margin-bottom: 2rem !important;
-    }
-
-    .description-text {
-        color: #5a6c7d !important;
-        font-size: 1.1rem !important;
-        line-height: 1.8 !important;
-        max-width: 800px;
-        margin: 0 auto 3rem;
     }
 
     .product-card {
@@ -288,18 +244,6 @@
     }
 
     @@media (max-width: 768px) {
-        .category-hero {
-            height: 300px;
-        }
-
-        .category-hero-title {
-            font-size: 2.5rem !important;
-        }
-
-        .category-hero-subtitle {
-            font-size: 1.2rem !important;
-        }
-
         .features-section {
             padding: 2rem 1rem;
         }

@@ -65,6 +65,30 @@
       "PackagePath": "staticwebassets\\Images\\dark-chocolate.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-1.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-2.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-3.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-3.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-4.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-4.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-5.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-5.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-6.png",
+      "PackagePath": "staticwebassets\\Images\\gift-box-6.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-boxes.png",
       "PackagePath": "staticwebassets\\Images\\gift-boxes.png"
     },

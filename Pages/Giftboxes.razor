@@ -1,5 +1,8 @@
 ﻿@page "/giftboxes"
 @using MudBlazor
+@using GriffinsStore1.Shared
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
 
 <PageTitle>Luxury Gift Boxes - Griffins Store</PageTitle>
 
@@ -23,7 +26,9 @@
                             <MudButton Variant="Variant.Filled"
                                        Color="Color.Default"
                                        FullWidth="true"
-                                       Class="add-to-cart-btn">
+                                       Class="add-to-cart-btn"
+                                       OnClick="@(() => AddToCart(product))">
+                                <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="mr-2" />
                                 Add to Cart
                             </MudButton>
                         </MudCardActions>
@@ -123,6 +128,21 @@
         public string Description { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
+    }
+
+    private void AddToCart(Product product)
+    {
+        var cartItem = new CartItem
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                ImageUrl = product.ImageUrl,
+                Quantity = 1
+            };
+
+        CartService.AddToCart(cartItem);
+        Snackbar.Add("Added to cart!", Severity.Success);
     }
 }
 

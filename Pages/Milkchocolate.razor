@@ -1,6 +1,8 @@
 ﻿@page "/milkchocolate"
 @using MudBlazor
-
+@using GriffinsStore1.Shared
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
 <PageTitle>Creamy Milk Chocolate - Griffins Store</PageTitle>
 
 <div class="milk-chocolate-page">
@@ -19,14 +21,14 @@
                             <MudText Typo="Typo.body2" Class="product-description">@product.Description</MudText>
                             <MudText Typo="Typo.h6" Class="product-price">$@product.Price</MudText>
                         </MudCardContent>
-                        <MudCardActions>
-                            <MudButton Variant="Variant.Filled" 
-                                       Color="Color.Default" 
-                                       FullWidth="true"
-                                       Class="add-to-cart-btn">
-                                Add to Cart
-                            </MudButton>
-                        </MudCardActions>
+                        <MudButton Variant="Variant.Filled"
+                                   Color="Color.Default"
+                                   FullWidth="true"
+                                   Class="add-to-cart-btn"
+                                   OnClick="@(() => AddToCart(product))">
+                            <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="mr-2" />
+                            Add to Cart
+                        </MudButton>
                     </MudCard>
                 </MudItem>
             }
@@ -123,6 +125,21 @@
         public string Description { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
+    }
+
+    private void AddToCart(Product product)
+    {
+        var cartItem = new CartItem
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                ImageUrl = product.ImageUrl,
+                Quantity = 1
+            };
+
+        CartService.AddToCart(cartItem);
+        Snackbar.Add("Added to cart!", Severity.Success);
     }
 }
 

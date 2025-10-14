@@ -1,0 +1,500 @@
+﻿@page "/cart"
+@using MudBlazor
+@using GriffinsStore1.Shared
+@inject NavigationManager NavigationManager
+
+<PageTitle>Shopping Cart - Griffins Store</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="py-8">
+    <MudText Typo="Typo.h3" Class="cart-title mb-6">
+        <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="mr-2" />
+        Shopping Cart
+    </MudText>
+
+    @if (cartItems.Count == 0)
+    {
+        <MudPaper Class="empty-cart-container" Elevation="0">
+            <div class="empty-cart-content">
+                <div class="empty-cart-icon-wrapper">
+                    <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Class="empty-cart-icon" />
+                    <div class="empty-cart-badge">0</div>
+                </div>
+                <MudText Typo="Typo.h4" Class="empty-cart-title">Your Cart is Empty</MudText>
+                <MudText Typo="Typo.body1" Class="empty-cart-subtitle">
+                    Looks like you haven't added anything to your cart yet.<br/>
+                    Discover amazing products and start shopping!
+                </MudText>
+                <div class="empty-cart-actions">
+                    <MudButton Variant="Variant.Filled" 
+                               Color="Color.Dark" 
+                               Size="Size.Large"
+                               StartIcon="@Icons.Material.Filled.Store"
+                               Class="shop-now-btn"
+                               OnClick="@(() => NavigationManager.NavigateTo("/"))">
+                        Start Shopping
+                    </MudButton>
+                </div>
+                <div class="empty-cart-features">
+                    <div class="feature-item">
+                        <MudIcon Icon="@Icons.Material.Filled.LocalShipping" Class="feature-icon" />
+                        <MudText Typo="Typo.body2" Class="feature-text">Free Shipping Over $50</MudText>
+                    </div>
+                    <div class="feature-item">
+                        <MudIcon Icon="@Icons.Material.Filled.Verified" Class="feature-icon" />
+                        <MudText Typo="Typo.body2" Class="feature-text">Secure Checkout</MudText>
+                    </div>
+                    <div class="feature-item">
+                        <MudIcon Icon="@Icons.Material.Filled.Replay" Class="feature-icon" />
+                        <MudText Typo="Typo.body2" Class="feature-text">Easy Returns</MudText>
+                    </div>
+                </div>
+            </div>
+        </MudPaper>
+    }
+    else
+    {
+        <MudGrid Spacing="4">
+            <!-- Cart Items Section -->
+            <MudItem xs="12" md="8">
+                <MudPaper Class="cart-items-section" Elevation="1">
+                    @foreach (var item in cartItems)
+                    {
+                        <div class="cart-item">
+                            <div class="item-image">
+                                <MudImage Src="@item.ImageUrl" 
+                                         Alt="@item.Name"
+                                         Class="cart-item-img" />
+                            </div>
+                            
+                            <div class="item-details">
+                                <MudText Typo="Typo.h6" Class="item-name">@item.Name</MudText>
+                                <MudText Typo="Typo.body2" Class="item-description">@item.Description</MudText>
+                                <MudText Typo="Typo.body2" Class="item-price">$@item.Price.ToString("F2")</MudText>
+                            </div>
+
+                            <div class="item-quantity">
+                                <MudIconButton Icon="@Icons.Material.Filled.Remove" 
+                                              Size="Size.Small"
+                                              OnClick="@(() => DecreaseQuantity(item))" />
+                                <MudText Class="quantity-display">@item.Quantity</MudText>
+                                <MudIconButton Icon="@Icons.Material.Filled.Add" 
+                                              Size="Size.Small"
+                                              OnClick="@(() => IncreaseQuantity(item))" />
+                            </div>
+
+                            <MudText Typo="Typo.h6" Class="total-price">
+                                $@((item.Price * item.Quantity).ToString("F2"))
+                            </MudText>
+
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete" 
+                                          Color="Color.Error"
+                                          OnClick="@(() => RemoveFromCart(item))" />
+                        </div>
+                    }
+                </MudPaper>
+            </MudItem>
+
+            <!-- Order Summary Section -->
+            <MudItem xs="12" md="4">
+                <MudPaper Class="order-summary" Elevation="1">
+                    <MudText Typo="Typo.h5" Class="summary-title mb-4">Order Summary</MudText>
+                    
+                    <div class="summary-row mb-3">
+                        <MudText Typo="Typo.body1">Subtotal:</MudText>
+                        <MudText Typo="Typo.body1" Class="summary-value">$@subtotal.ToString("F2")</MudText>
+                    </div>
+
+                    <div class="summary-row mb-3">
+                        <MudText Typo="Typo.body1">Shipping:</MudText>
+                        <MudText Typo="Typo.body1" Class="summary-value">$@shippingCost.ToString("F2")</MudText>
+                    </div>
+
+                    <div class="summary-row mb-3">
+                        <MudText Typo="Typo.body1">Tax (10%):</MudText>
+                        <MudText Typo="Typo.body1" Class="summary-value">$@tax.ToString("F2")</MudText>
+                    </div>
+
+                    <MudDivider Class="my-3" />
+
+                    <div class="summary-row mb-6 total-row">
+                        <MudText Typo="Typo.h6">Total:</MudText>
+                        <MudText Typo="Typo.h6" Class="total-value">$@total.ToString("F2")</MudText>
+                    </div>
+
+                    <MudButton Variant="Variant.Filled" 
+                               Color="Color.Dark" 
+                               Size="Size.Large"
+                               FullWidth="true"
+                               Class="checkout-btn mb-3">
+                        Proceed to Checkout
+                    </MudButton>
+
+                    <MudButton Variant="Variant.Outlined" 
+                               Color="Color.Dark" 
+                               Size="Size.Large"
+                               FullWidth="true"
+                               OnClick="@(() => NavigationManager.NavigateTo("/"))">
+                        Continue Shopping
+                    </MudButton>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    }
+</MudContainer>
+
+@code {
+    private List<CartItem> cartItems = new();
+
+    protected override void OnInitialized()
+    {
+        LoadCart();
+    }
+
+    private void LoadCart()
+    {
+        cartItems = CartService.CartItems;
+    }
+
+    private void IncreaseQuantity(CartItem item)
+    {
+        item.Quantity++;
+        StateHasChanged();
+    }
+
+    private void DecreaseQuantity(CartItem item)
+    {
+        if (item.Quantity > 1)
+        {
+            item.Quantity--;
+        }
+        else
+        {
+            RemoveFromCart(item);
+        }
+        StateHasChanged();
+    }
+
+    private void RemoveFromCart(CartItem item)
+    {
+        cartItems.Remove(item);
+        CartService.CartItems = cartItems;
+        StateHasChanged();
+    }
+
+    private decimal subtotal => cartItems.Sum(item => item.Price * item.Quantity);
+    private decimal shippingCost => subtotal > 50 ? 0 : 5.99m;
+    private decimal tax => subtotal * 0.10m;
+    private decimal total => subtotal + shippingCost + tax;
+}
+
+<style>
+    .cart-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .empty-cart-container {
+        border-radius: 24px;
+        background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .empty-cart-content {
+        text-align: center;
+        padding: 5rem 2rem 4rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .empty-cart-icon-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+
+    .empty-cart-icon {
+        font-size: 120px !important;
+        color: #8B4513 !important;
+        opacity: 0.15;
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    .empty-cart-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #8B4513;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+    }
+
+    @@keyframes floatIcon {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .empty-cart-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .empty-cart-subtitle {
+        color: #5a6c7d !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2.5rem !important;
+        font-size: 1.05rem !important;
+    }
+
+    .empty-cart-actions {
+        margin-bottom: 3rem;
+    }
+
+    .shop-now-btn {
+        background: linear-gradient(135deg, #8B4513 0%, #654321 100%) !important;
+        color: white !important;
+        border-radius: 12px !important;
+        padding: 1rem 3rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        font-size: 1.1rem !important;
+        box-shadow: 0 8px 24px rgba(139, 69, 19, 0.25) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .shop-now-btn:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 12px 32px rgba(139, 69, 19, 0.35) !important;
+    }
+
+    .empty-cart-features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        padding-top: 2rem;
+        border-top: 2px dashed rgba(139, 69, 19, 0.2);
+    }
+
+    .feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .feature-icon {
+        font-size: 32px !important;
+        color: #8B4513 !important;
+        opacity: 0.8;
+    }
+
+    .feature-text {
+        color: #5a6c7d !important;
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+    }
+
+    .cart-items-section {
+        border-radius: 16px !important;
+        overflow: hidden;
+    }
+
+    .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid #e0e0e0;
+        gap: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+    .cart-item:hover {
+        background-color: #f9f9f9;
+    }
+
+    .item-image {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #FFFEF9;
+    }
+
+    .cart-item-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .item-details {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .item-name {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .item-description {
+        color: #5a6c7d !important;
+        margin-bottom: 0.5rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .item-price {
+        color: #8B4513 !important;
+        font-weight: 700 !important;
+    }
+
+    .item-quantity {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .quantity-display {
+        min-width: 30px;
+        text-align: center;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .item-total {
+        min-width: 80px;
+        text-align: right;
+    }
+
+    .total-price {
+        color: #8B4513 !important;
+        font-weight: 700 !important;
+    }
+
+    .order-summary {
+        border-radius: 16px !important;
+        padding: 2rem !important;
+        background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+        position: sticky;
+        top: 100px;
+    }
+
+    .summary-title {
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .summary-value {
+        font-weight: 600 !important;
+        color: #5a6c7d !important;
+    }
+
+    .total-row {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .total-value {
+        color: #8B4513 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .checkout-btn {
+        background-color: #8B4513 !important;
+        color: white !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .checkout-btn:hover {
+        background-color: #654321 !important;
+        transform: translateY(-2px) !important;
+    }
+
+    @@media (max-width: 768px) {
+        .empty-cart-content {
+            padding: 3rem 1.5rem 2.5rem;
+        }
+
+        .empty-cart-icon {
+            font-size: 80px !important;
+        }
+
+        .empty-cart-badge {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+
+        .empty-cart-features {
+            gap: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 28px !important;
+        }
+
+        .shop-now-btn {
+            padding: 0.875rem 2rem !important;
+            font-size: 1rem !important;
+        }
+
+        .cart-item {
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+        }
+
+        .item-details {
+            flex-basis: 100%;
+            min-width: auto;
+        }
+
+        .order-summary {
+            position: static;
+        }
+
+        .item-quantity,
+        .item-total {
+            flex: 1;
+            min-width: 100px;
+        }
+    }
+</style>
