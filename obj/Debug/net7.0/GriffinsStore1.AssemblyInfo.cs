@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GriffinsStore1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c89c228cbf1e8ffcbc0d48a10a9b604baa60aa5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f10ef2d71350f0541b5404c94c9beced74bd1bb4")]
 [assembly: System.Reflection.AssemblyProductAttribute("GriffinsStore1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GriffinsStore1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
