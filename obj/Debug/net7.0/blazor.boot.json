@@ -1,7 +1,7 @@
 {
   "entryAssembly": "GriffinsStore1",
   "resources": {
-    "hash": "sha256-cE1ZP8dXC36eFDEAxLE0t/gL/2pXyaBeYYUsa3tuph4=",
+    "hash": "sha256-WS2cembFPlI6VgdNgT5LylB9Ncs8k4/iUCcmphoYgiE=",
     "runtime": {
       "dotnet.7.0.20.owh6xpda4a.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -205,10 +205,10 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "GriffinsStore1.dll": "sha256-RWbJOe5DyWdaEq+1caw4fxqDLZMyBNNYkBHPVgdZ1hc="
+      "GriffinsStore1.dll": "sha256-6zD8MTD87naggKvf7N4Zc/gEvMIdQDi7ndZocWhd5Q0="
     },
     "pdb": {
-      "GriffinsStore1.pdb": "sha256-1Xx58IQ1Mr2Hl07t0PmvABtHvbojrLGVRmMxebeFWnM="
+      "GriffinsStore1.pdb": "sha256-Vt2pUsEpuRs8ykPeBjDBYWsfIds8ESPJAIREsir31Co="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

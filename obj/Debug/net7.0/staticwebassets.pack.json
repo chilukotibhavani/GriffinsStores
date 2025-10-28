@@ -65,6 +65,14 @@
       "PackagePath": "staticwebassets\\Images\\dark-chocolate.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-gsap1.png",
+      "PackagePath": "staticwebassets\\Images\\dark-gsap1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\dark-gsap2.png",
+      "PackagePath": "staticwebassets\\Images\\dark-gsap2.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\gift-box-1.png",
       "PackagePath": "staticwebassets\\Images\\gift-box-1.png"
     },
@@ -153,6 +161,14 @@
       "PackagePath": "staticwebassets\\Images\\milk-chocolate.png"
     },
     {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-gsap1.png",
+      "PackagePath": "staticwebassets\\Images\\milk-gsap1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\milk-gsap2.png",
+      "PackagePath": "staticwebassets\\Images\\milk-gsap2.png"
+    },
+    {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-1.png",
       "PackagePath": "staticwebassets\\Images\\truffles-1.png"
     },
@@ -175,6 +191,18 @@
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-6.png",
       "PackagePath": "staticwebassets\\Images\\truffles-6.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-gsap1.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-gsap1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-gsap2.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-gsap2.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles-gsap3.png",
+      "PackagePath": "staticwebassets\\Images\\truffles-gsap3.png"
     },
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\truffles.png",
@@ -207,6 +235,14 @@
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-chocolate.png",
       "PackagePath": "staticwebassets\\Images\\white-chocolate.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-gsap1.png",
+      "PackagePath": "staticwebassets\\Images\\white-gsap1.png"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\Images\\white-gsap2.png",
+      "PackagePath": "staticwebassets\\Images\\white-gsap2.png"
     },
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\css\\app.css",
@@ -267,6 +303,10 @@
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\javascript\\gsap-animations.js",
+      "PackagePath": "staticwebassets\\javascript\\gsap-animations.js"
     },
     {
       "Id": "F:\\GriffinsStore2\\GriffinsStore1\\GriffinsStore1\\wwwroot\\sample-data\\weather.json",

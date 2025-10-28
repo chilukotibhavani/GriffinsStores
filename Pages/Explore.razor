@@ -1,0 +1,552 @@
+﻿@page "/explore"
+@inject IJSRuntime JSRuntime
+@implements IAsyncDisposable
+
+<PageTitle>Explore - Griffins Store</PageTitle>
+
+<div class="explore-container" id="explore-container">
+    <section class="slide">
+        <div class="slide__outer">
+            <div class="slide__inner">
+                <div class="slide__content">
+                    <div class="slide__container">
+                        <h2 class="slide__heading">DARK</h2>
+                        <figure class="slide__img-cont">
+                            <img class="slide__img" src='Images/dark-gsap1.png' alt='Dark Chocolate'>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="slide__outer">
+            <div class="slide__inner">
+                <div class="slide__content">
+                    <div class="slide__container">
+                        <h2 class="slide__heading">MILK</h2>
+                        <figure class="slide__img-cont">
+                            <img class="slide__img" src='Images/milk-gsap1.png' alt='Milk Chocolate'>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="slide__outer">
+            <div class="slide__inner">
+                <div class="slide__content">
+                    <div class="slide__container">
+                        <h2 class="slide__heading">WHITE</h2>
+                        <figure class="slide__img-cont">
+                            <img class="slide__img" src='Images/white-gsap1.png' alt='White Chocolate'>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="slide__outer">
+            <div class="slide__inner">
+                <div class="slide__content">
+                    <div class="slide__container">
+                        <h2 class="slide__heading">TRUFFLE</h2>
+                        <figure class="slide__img-cont">
+                            <img class="slide__img" src='Images/truffles-gsap1.png' alt='Chocolate Truffles'>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="overlay">
+        <div class="overlay__content">
+            <p class="overlay__count">0<span class="count">1</span></p>
+            <figure class="overlay__img-cont">
+                <img class="image" src="Images/truffles-gsap3.png" alt="Premium Chocolate 1" />
+                <img class="image" src="Images/white-gsap2.png" alt="Premium Chocolate 2" />
+                <img class="image" src="Images/milk-gsap2.png" alt="Premium Chocolate 3" />
+                <img class="image" src="Images/dark-gsap2.png" alt="Premium Chocolate 4" />
+            </figure>
+        </div>
+    </section>
+
+    <footer class="explore-footer">
+        <a href="/" class="back-home">← Back to Home</a>
+        <p class="footer-text">Griffins Store - Explore Our Collection</p>
+    </footer>
+</div>
+
+@code {
+    private IJSObjectReference? jsModule;
+    private DotNetObjectReference<Explore>? dotNetReference;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("eval", @"
+                    (function() {
+                        if (typeof gsap === 'undefined' || typeof Observer === 'undefined') {
+                            console.error('GSAP or Observer not loaded');
+                            return;
+                        }
+
+                        const sections = gsap.utils.toArray('.slide');
+                        const images = gsap.utils.toArray('.image').reverse();
+                        const slideImages = gsap.utils.toArray('.slide__img');
+                        const outerWrappers = gsap.utils.toArray('.slide__outer');
+                        const innerWrappers = gsap.utils.toArray('.slide__inner');
+                        const count = document.querySelector('.count');
+                        const wrap = gsap.utils.wrap(0, sections.length);
+
+                        let animating = false;
+                        let currentIndex = 0;
+
+                        gsap.set(outerWrappers, { xPercent: 100 });
+                        gsap.set(innerWrappers, { xPercent: -100 });
+                        gsap.set('.slide:nth-of-type(1) .slide__outer', { xPercent: 0 });
+                        gsap.set('.slide:nth-of-type(1) .slide__inner', { xPercent: 0 });
+
+                        function gotoSection(index, direction) {
+                            animating = true;
+                            index = wrap(index);
+
+                            let tl = gsap.timeline({
+                                defaults: { duration: 1, ease: 'expo.inOut' },
+                                onComplete: () => {
+                                    animating = false;
+                                }
+                            });
+
+                            let currentSection = sections[currentIndex];
+                            let heading = currentSection.querySelector('.slide__heading');
+                            let nextSection = sections[index];
+                            let nextHeading = nextSection.querySelector('.slide__heading');
+
+                            gsap.set([sections, images], { zIndex: 0, autoAlpha: 0 });
+                            gsap.set([sections[currentIndex], images[index]], { zIndex: 1, autoAlpha: 1 });
+                            gsap.set([sections[index], images[currentIndex]], { zIndex: 2, autoAlpha: 1 });
+
+                            tl.set(count, { textContent: index + 1 }, 0.32)
+                                .fromTo(outerWrappers[index], { xPercent: 100 * direction }, { xPercent: 0 }, 0)
+                                .fromTo(innerWrappers[index], { xPercent: -100 * direction }, { xPercent: 0 }, 0)
+                                .to(heading, { '--width': 800, xPercent: 30 * direction }, 0)
+                                .fromTo(nextHeading, { '--width': 800, xPercent: -30 * direction }, { '--width': 200, xPercent: 0 }, 0)
+                                .fromTo(images[index], { xPercent: 125 * direction, scaleX: 1.5, scaleY: 1.3 }, { xPercent: 0, scaleX: 1, scaleY: 1, duration: 1 }, 0)
+                                .fromTo(images[currentIndex], { xPercent: 0, scaleX: 1, scaleY: 1 }, { xPercent: -125 * direction, scaleX: 1.5, scaleY: 1.3 }, 0)
+                                .fromTo(slideImages[index], { scale: 2 }, { scale: 1 }, 0)
+                                .timeScale(0.8);
+
+                            currentIndex = index;
+                        }
+
+                        // Create observer with target element specified
+                        const observer = Observer.create({
+                            target: document.querySelector('.explore-container'),
+                            type: 'wheel,touch,pointer',
+                            preventDefault: true,
+                            wheelSpeed: -1,
+                            onUp: () => {
+                                if (animating) return;
+                                gotoSection(currentIndex + 1, +1);
+                            },
+                            onDown: () => {
+                                if (animating) return;
+                                gotoSection(currentIndex - 1, -1);
+                            },
+                            tolerance: 10
+                        });
+
+                        const keyHandler = function(e) {
+                            if ((e.code === 'ArrowUp' || e.code === 'ArrowLeft') && !animating) {
+                                gotoSection(currentIndex - 1, -1);
+                            }
+                            if ((e.code === 'ArrowDown' || e.code === 'ArrowRight' || e.code === 'Space' || e.code === 'Enter') && !animating) {
+                                gotoSection(currentIndex + 1, 1);
+                            }
+                        };
+
+                        document.addEventListener('keydown', keyHandler);
+
+                        // Store cleanup function globally so it can be called on dispose
+                        window.cleanupExploreGSAP = function() {
+                            observer.kill();
+                            document.removeEventListener('keydown', keyHandler);
+                            gsap.killTweensOf('*');
+                        };
+                    })();
+                ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing GSAP: {ex.Message}");
+            }
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                if (window.cleanupExploreGSAP) {
+                    window.cleanupExploreGSAP();
+                    delete window.cleanupExploreGSAP;
+                }
+            ");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error cleaning up GSAP: {ex.Message}");
+        }
+
+        if (jsModule is not null)
+        {
+            await jsModule.DisposeAsync();
+        }
+    }
+}
+
+<style>
+    @@font-face {
+        font-family: "Bandeins Sans & Strange Variable";
+        src: url("https://res.cloudinary.com/dldmpwpcp/raw/upload/v1566406079/BandeinsStrangeVariable_esetvq.ttf");
+    }
+
+    @@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+
+    .explore-container * {
+        box-sizing: border-box;
+        user-select: none;
+    }
+
+    .explore-container {
+        position: fixed;
+        top: 3.5rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: #4361ee;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+    }
+
+        .explore-container figure {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    
+    .slide {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        visibility: hidden;
+    }
+
+    .slide__outer,
+    .slide__inner {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .slide__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        overflow: hidden;
+    }
+
+    .slide__container {
+        position: relative;
+        max-width: 1400px;
+        width: 100vw;
+        margin: 0 auto;
+        height: 85vh;
+        margin-bottom: 5vh;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        padding: 0 1rem;
+    }
+
+    .slide__heading {
+        --width: 200;
+        display: block;
+        text-align: left;
+        font-family: "Bandeins Sans & Strange Variable", "Arial Black", sans-serif;
+        font-size: clamp(3rem, 12vw, 15rem);
+        font-weight: 900;
+        font-variation-settings: "wdth" var(--width);
+        margin: 0;
+        padding: 0;
+        color: #f2f1fc;
+        z-index: 999;
+        mix-blend-mode: difference;
+        grid-area: 2 / 1 / 3 / 11;
+        align-self: end;
+        line-height: 0.9;
+        overflow: visible;
+        white-space: nowrap;
+    }
+
+    .slide__img-cont {
+        margin-top: 2rem;
+        grid-area: 3 / 1 / 8 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slide__img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .slide:nth-of-type(1) {
+        visibility: visible;
+    }
+
+        .slide:nth-of-type(1) .slide__content {
+            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+        }
+
+    .slide:nth-of-type(2) .slide__content {
+       background: linear-gradient(135deg, #2C5F6F 0%, #1A3A47 100%);
+    }
+
+    .slide:nth-of-type(3) .slide__content {
+        background: linear-gradient(135deg, #DC143C 0%, #FF6B6B 100%) !important;
+    }
+
+    .slide:nth-of-type(4) .slide__content {
+        background: linear-gradient(135deg, #7B6B8E 0%, #4A3F5C 100%);
+    }
+
+    .overlay {
+        position: fixed;
+        top: 3.5rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .overlay__content {
+        max-width: 1400px;
+        width: 100vw;
+        margin: 0 auto;
+        padding: 0 1rem;
+        height: 85vh;
+        margin-bottom: 5vh;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+     .overlay__img-cont {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        grid-area: 5 / 4 / 10 / 11;
+    }
+
+        .overlay__img-cont img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: 50% 50%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .overlay__img-cont img:last-child {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    .overlay__count {
+        grid-area: 3 / 9 / 4 / 11;
+        font-size: clamp(2.5rem, 6vw, 6rem);
+        margin: 0;
+        padding: 0 0.5rem;
+        text-align: right;
+        border-bottom: 4px white solid;
+        line-height: 1;
+    }
+
+    /* Tablet and smaller screens */
+    @@media screen and (max-width: 1024px) {
+        .slide__heading {
+            font-size: clamp(2.5rem, 10vw, 10rem);
+            grid-area: 2 / 1 / 3 / 11;
+        }
+
+        .slide__img-cont {
+            grid-area: 4 / 1 / 8 / 10;
+        }
+
+        .overlay__img-cont {
+            grid-area: 5 / 3 / 10 / 11;
+        }
+
+        .overlay__count {
+            grid-area: 3 / 8 / 4 / 11;
+            font-size: clamp(2rem, 5vw, 5rem);
+        }
+    }
+
+    /* Mobile screens */
+    @@media screen and (max-width: 768px) {
+        .explore-container {
+            top: 3.5rem;
+        }
+
+        .overlay {
+            top: 3.5rem;
+        }
+
+        .slide__heading {
+            font-size: clamp(2rem, 15vw, 6rem);
+            grid-area: 1 / 1 / 3 / 11;
+            align-self: center;
+        }
+
+        .slide__container {
+            padding: 0 0.5rem;
+            height: 88vh;
+        }
+
+        .slide__img-cont {
+            margin-top: 1rem;
+            grid-area: 4 / 1 / 9 / 11;
+        }
+
+        .overlay__content {
+            padding: 0 0.5rem;
+            height: 88vh;
+        }
+
+        .overlay__img-cont {
+            grid-area: 5 / 2 / 10 / 11;
+        }
+
+        .overlay__count {
+            grid-area: 3 / 8 / 4 / 11;
+            font-size: clamp(1.8rem, 8vw, 4rem);
+            border-bottom: 3px white solid;
+        }
+
+        .explore-footer {
+            height: 4em;
+            padding: 0 1rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+        }
+
+            .explore-footer a {
+                padding: 0.4rem 0.8rem;
+            }
+    }
+
+    /* Very small mobile screens */
+    @@media screen and (max-width: 480px) {
+        .slide__heading {
+            font-size: clamp(1.8rem, 18vw, 4.5rem);
+        }
+
+        .explore-footer {
+            height: 3.5em;
+            padding: 0 0.5rem;
+            font-size: 0.7rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+            .explore-footer a,
+            .footer-text {
+                font-size: 0.7rem;
+            }
+
+            .explore-footer a {
+                padding: 0.3rem 0.6rem;
+            }
+
+        .overlay__count {
+            font-size: clamp(1.5rem, 10vw, 3rem);
+        }
+
+        .slide__container,
+        .overlay__content {
+            padding: 0 0.3rem;
+        }
+    }
+
+    /* Landscape mobile */
+    @@media screen and (max-height: 500px) and (orientation: landscape) {
+        .slide__heading {
+            font-size: clamp(2rem, 10vh, 4rem);
+        }
+
+        .slide__container {
+            height: 80vh;
+        }
+
+        .overlay__content {
+            height: 80vh;
+        }
+
+        .explore-footer {
+            height: 3em;
+        }
+    }
+
+    /* Large desktop screens */
+    @@media screen and (min-width: 1400px) {
+        .overlay__content,
+        .slide__container {
+            padding: 0 3rem;
+            margin-top: 5vh;
+            height: 82vh;
+        }
+
+        .overlay__img-cont {
+            grid-area: 5 / 5 / 10 / 11;
+        }
+
+        .overlay__count {
+            grid-area: 3 / 10 / 4 / 11;
+        }
+
+        .slide__img-cont {
+            margin-top: 0;
+            grid-area: 3 / 2 / 8 / 7;
+        }
+
+        .slide__heading {
+            grid-area: 1 / 1 / 4 / 10;
+        }
+    }
+</style>
